@@ -1,4 +1,5 @@
 from manimlib.imports import *
+from .screen_grid import ScreenGrid
 
 
 class WriteText(Scene):
@@ -8,4 +9,10 @@ class WriteText(Scene):
         self.wait(3)
 
 
-
+class Positions(Scene):
+    def construct(self):
+        grid = ScreenGrid()
+        object = Dot()
+        object.to_edge(UP)
+        self.add(grid, object)
+        self.wait()
