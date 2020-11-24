@@ -94,3 +94,10 @@ class CopyTextV1(Scene):
         #     )
         # self.wait()
 
+
+class SVGText(Scene):
+    def construct(self):
+        car_wheel = SVGMobject("car-wheel").scale(1.5)
+        car_wheel.move_to(UP)
+        self.play(DrawBorderThenFill(car_wheel, rate_func=linear))
+        self.wait()
