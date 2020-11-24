@@ -133,10 +133,4 @@ class UpdatersExample(Scene):
         )
         self.wait()
 
-
-class FirstScene(Scene):
-    def construct(self):
-        text = TextMobject("text")
-        self.add(text)
-
 # See old_projects folder for many, many more
