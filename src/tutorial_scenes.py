@@ -4,9 +4,13 @@ from .screen_grid import ScreenGrid
 
 class WriteText(Scene):
     def construct(self):
-        text = TextMobject("Hello World!")
-        self.play(Write(text))
-        self.wait(3)
+        text_eng = TextMobject("Hello World!")
+        text_eng.move_to(UP)
+        text_kor = TextMobject("안녕!")
+        self.play(Write(text_eng))
+        self.wait()
+        self.play(Write(text_kor))
+        self.wait()
 
 
 class Positions(Scene):
