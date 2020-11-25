@@ -31,17 +31,27 @@ class CircleScene(Scene):
         self.wait(2)
 
 
-class DrawLineScene(Scene):
+class RollACircle(Scene):
     def construct(self):
+        # 초기 화면 설정
         circle_big = Circle().set_color(YELLOW).set_stroke(width=5)
         circle_small = Circle().scale(0.5).set_color(ORANGE).set_stroke(width=5)
         circle_big.shift(LEFT * PI)
         circle_small.shift(LEFT * PI)
         self.add(circle_big, circle_small)
 
-        line0 = Line(circle_big.get_center(), circle_big.get_bottom())
-        self.play(ShowCreation(line0))
+        center_line = Line(circle_big.get_center(), circle_big.get_bottom())
+        self.play(ShowCreation(center_line))
         self.wait()
+        
+        # Rolling : 고쳐야 함
+        wheel = VGroup(circle_big, circle_small, center_line)
+        wheel.generate_target()
+        wheel.target.shift(RIGHT * 2 * PI)
+        wheel.target.rotate(2 * PI)
+        self.play(MoveToTarget(wheel), run_time=3)
+        self.wait()
+
         line1 = Line(circle_big.get_bottom(), circle_big.get_bottom() + RIGHT * PI * 2)
         line1.set_color(YELLOW).set_stroke(width=3)
         line2 = Line(circle_small.get_bottom(), circle_small.get_bottom() + RIGHT * PI * 2)
